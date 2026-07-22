@@ -156,23 +156,24 @@ Top 5 Recommendations
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+**1. Genre weight: 3.0 → 0.5** 
+At weight 3.0, *Gym Hero* (pop, mood mismatch) ranked #2 at 4.87, ahead of *Rooftop Lights* (indie pop — genre mismatch, but mood match) at 3.96. Dropping genre to 0.5 flipped that order: *Rooftop Lights* (3.96) jumped ahead of *Gym Hero* (now 2.37). Confirms genre weight is what decides whether "same genre, wrong mood" beats "wrong genre, right mood" — at low weight, mood + energy closeness wins instead.
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+**2. Adding `valence` to the score**
+
+Every score rose since happy/energetic songs in this catalog already have high valence — but the *top 3 stayed in the same order* (`Sunrise City` → `Gym Hero` → `Rooftop Lights`), because valence is largely redundant with mood here. It did change the *tail* of the top-5: `Ashes to Echo` (gospel, valence 0.89) and `Tropical Tremor` (reggaeton, valence 0.92) pushed out `Walk` and `Night Drive Loop`, purely on valence, despite matching neither genre nor mood — a sign that valence needs a low weight or it starts overriding genre/mood mismatches with an unrelated signal.
+
+**3. Different user types**
+
+- Niche genre (`genre=k-pop`): only one song in the catalog is tagged `k-pop`, so it scored a perfect 7.00 while every other song fell to ~1.97 — a steep cliff. Binary genre matching works fine when it hits, but with 19 genres across 21 songs it produces a "one clear winner, then a wall" pattern rather than a graded list.
+- Contradictory prefs (`mood=chill` but `energy=0.9`): the system sided with `mood` — top results were the lofi/chill songs (actual energy 0.35–0.42) despite the high energy target, because genre+mood together are worth 5 points vs. energy's max of 1. This matches the earlier prediction that a single continuous feature can't outvote two binary ones, so contradictory profiles quietly default to whichever categorical field is set, not an average of the two.
+- Acoustic/low-energy lover (`genre=folk, mood=nostalgic, energy=0.3`): clean case — one genre match again dominated (score 6.99), well ahead of the next-best song (1.98), since `folk` also only appears once.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
+This recommender only works on a 21-song catalog, so recommendations don't generalize beyond it. With 19 genres across those songs, genre matching is sparse — a niche-genre user gets one dominant match and then a steep drop-off rather than a graded list. Contradictory preferences (e.g. `mood=chill` + high `target_energy`) get silently resolved in favor of whichever categorical field is set, not blended, since genre+mood (5 pts) outweigh a single continuous field (1 pt each). It also ignores lyrics, language, artist diversity, and listening history entirely — it only compares stated tags and numeric audio features.
 
 You will go deeper on this in your model card.
 
@@ -189,5 +190,4 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
-
-
+When making this recommender, I learned that that it is built off scoring and sorting, there's no learning or understanding involved, only the weights I chose (genre=3, mood=2, energy=1, acousticness=1). The scoring rule and ranking rule turned out to be genuinely separate concerns: scoring only ever looks at one song at a time, while ranking is the step that compares all of them, which is why I could change genre's weight from 3.0 to 0.5 and immediately flip which song appeared at #2, without touching the sort logic at all. The bias risk that surprised me most was how genre sparsity concentrates recommendations: with 19 genres spread across 21 songs, a user with a niche genre preference (like `k-pop`) gets one dominant match and then a steep score cliff to everything else, effectively making the system a lookup table for well-represented genres and useless for underrepresented ones.
