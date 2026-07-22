@@ -13,20 +13,20 @@ from recommender import load_songs, recommend_songs
 
 
 def main() -> None:
-    songs = load_songs("data/songs.csv") 
+    songs = load_songs("data/songs.csv")
+    print(f"Loaded songs: {len(songs)}")
 
     # Starter example profile
-    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    user_prefs = {"genre": "k-pop", "mood": "chill", "energy": 0.8, "danceability": 0.7, "tempo": 120, "instrumentalness" : 0.1, "loudness": -5.0, "valence": 0.6}
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    print("\nTop recommendations:\n")
-    for rec in recommendations:
-        # You decide the structure of each returned item.
-        # A common pattern is: (song, score, explanation)
-        song, score, explanation = rec
-        print(f"{song['title']} - Score: {score:.2f}")
-        print(f"Because: {explanation}")
+    header = f"Top {len(recommendations)} Recommendations"
+    print(f"\n{header}\n{'=' * len(header)}\n")
+    for rank, (song, score, explanation) in enumerate(recommendations, start=1):
+        print(f"{rank}. {song['title']} (by {song['artist']}) - Score: {score:.2f}")
+        for reason in explanation.split("; "):
+            print(f"     - {reason}")
         print()
 
 

@@ -1,11 +1,22 @@
-id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
-1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18
-2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71
-3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10
-4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86
-5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05
-6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92
-7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89
-8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
-9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
-10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness,popularity_score,year_released,duration_sec,instrumentalness,loudness_db
+1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18,0.87,2023,210,0.02,-8.2
+2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71,0.65,2024,175,0.15,-14.5
+3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10,0.79,2022,198,0.01,-5.8
+4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86,0.58,2023,182,0.22,-16.3
+5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05,0.92,2024,185,0.00,-4.9
+6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92,0.45,2022,240,0.89,-20.1
+7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89,0.61,2023,195,0.05,-17.8
+8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22,0.74,2024,215,0.08,-9.7
+9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78,0.63,2023,168,0.12,-15.2
+10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35,0.83,2024,192,0.03,-7.4
+11,Desert Highway,The Dustbowl Ramblers,country,melancholic,0.55,108,0.42,0.68,0.64,0.56,2021,225,0.01,-11.3
+12,Neon Abyss,Void Walker,industrial,aggressive,0.96,140,0.33,0.71,0.07,0.70,2023,205,0.06,-6.1
+13,Ballet of Shadows,Crimson String Ensemble,classical,dramatic,0.44,96,0.28,0.35,0.95,0.38,2020,310,0.92,-22.4
+14,Tropical Tremor,Isla Ritmo,reggaeton,euphoric,0.88,102,0.92,0.94,0.12,0.91,2024,190,0.00,-5.2
+15,Foggy Morning Groove,Bass & Bristle,funk,soulful,0.69,98,0.74,0.85,0.43,0.73,2022,200,0.04,-9.3
+16,Whisper of the Fjord,Eira Vinter,folk,nostalgic,0.31,68,0.52,0.39,0.88,0.41,2021,230,0.18,-18.6
+17,Cyborg Rave,Circuit Queen,techno,hypnotic,0.97,128,0.45,0.91,0.02,0.82,2024,170,0.10,-4.2
+18,Strings in Orbit,Nova Quartet,experimental,ethereal,0.39,88,0.37,0.48,0.79,0.47,2023,255,0.62,-16.9
+19,Midnight Samba,Rio Claro,latin jazz,romantic,0.58,116,0.68,0.77,0.56,0.68,2022,208,0.01,-10.5
+20,Ashes to Echo,Silent Choir,gospel,hopeful,0.73,76,0.89,0.63,0.44,0.76,2023,220,0.07,-8.9
+21,Walk,NCT 127,k-pop,energetic,0.85,100,0.72,0.80,0.15,0.95,2024,195,0.02,-6.4
